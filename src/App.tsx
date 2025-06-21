@@ -23,6 +23,8 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/clicker-game" element={<ClickerGame />} />
             <Route path="/jogo-parasitologia" element={<ParasitologyGame />} />
+            <Route path="/jogo-parasitologia/microscopio" element={<MicroscopioGame />} />
+            <Route path="/jogo-parasitologia/microscopio/fase/:phaseId" element={<MicroscopioGame />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
