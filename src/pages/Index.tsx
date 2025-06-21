@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Search, Book, Gamepad2 } from 'lucide-react';
+import { Search, Book, Gamepad2, Microscope } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -39,14 +39,24 @@ const Index = () => {
                 Atlas de Parasitas
               </h1>
             </div>
-            <Button
-              onClick={() => navigate('/clicker-game')}
-              className="bg-white/20 hover:bg-white/30 text-white border-white/30 px-6 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
-              variant="outline"
-            >
-              <Gamepad2 className="mr-2 h-5 w-5" />
-              Jogo Clicker 🧪
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                onClick={() => navigate('/clicker-game')}
+                className="bg-white/20 hover:bg-white/30 text-white border-white/30 px-6 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                variant="outline"
+              >
+                <Gamepad2 className="mr-2 h-5 w-5" />
+                Jogo Clicker 🧪
+              </Button>
+              <Button
+                onClick={() => navigate('/jogo-parasitologia')}
+                className="bg-white/20 hover:bg-white/30 text-white border-white/30 px-6 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                variant="outline"
+              >
+                <Microscope className="mr-2 h-5 w-5" />
+                Microscópio Maluco 🔬
+              </Button>
+            </div>
           </div>
           <p className="text-blue-100 text-center text-lg max-w-2xl mx-auto">
             Guia completo para o estudo de parasitas humanos com informações detalhadas sobre morfologia, ciclo biológico e diagnóstico
