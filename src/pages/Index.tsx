@@ -1,9 +1,11 @@
 
 import { useState } from 'react';
-import { Search, Book } from 'lucide-react';
+import { Search, Book, Gamepad2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import ParasiteCard from '@/components/ParasiteCard';
 import ParasiteDetail from '@/components/ParasiteDetail';
@@ -12,6 +14,7 @@ import { parasitesData } from '@/data/parasites';
 const Index = () => {
   const [selectedParasite, setSelectedParasite] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const filteredParasites = parasitesData.filter(parasite =>
     parasite.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -27,13 +30,23 @@ const Index = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 shadow-xl">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="bg-white/20 p-3 rounded-full">
-              <Book className="h-8 w-8 text-white" />
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center space-x-4">
+              <div className="bg-white/20 p-3 rounded-full">
+                <Book className="h-8 w-8 text-white" />
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white">
+                Atlas de Parasitas
+              </h1>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-              Atlas de Parasitas
-            </h1>
+            <Button
+              onClick={() => navigate('/clicker-game')}
+              className="bg-white/20 hover:bg-white/30 text-white border-white/30 px-6 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
+              variant="outline"
+            >
+              <Gamepad2 className="mr-2 h-5 w-5" />
+              Jogo Clicker 🧪
+            </Button>
           </div>
           <p className="text-blue-100 text-center text-lg max-w-2xl mx-auto">
             Guia completo para o estudo de parasitas humanos com informações detalhadas sobre morfologia, ciclo biológico e diagnóstico
