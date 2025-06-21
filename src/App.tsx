@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ClickerGame from "./pages/ClickerGame";
 import ParasitologyGame from "./pages/ParasitologyGame";
+import MicroscopioGame from "./pages/MicroscopioGame";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

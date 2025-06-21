@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phase } from '@/data/microscopio-game';
-import { Trophy, Star, BookOpen } from 'lucide-react';
+import { Trophy, Star, BookOpen, Target } from 'lucide-react';
 import FlashcardReview from './FlashcardReview';
 
 interface PhaseSummaryProps {
