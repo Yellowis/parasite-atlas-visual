@@ -99,11 +99,11 @@ export const phases: Phase[] = [
       }
     ],
     flashcards: [
-      { term: "Forma infectante", definition: "Larva filarioide (L3)" },
-      { term: "Autoinfecção", definition: "Externa e interna possíveis" },
-      { term: "Diagnóstico", definition: "Cultura em placa de ágar" },
+      { term: "Larvas L3", definition: "Penetram pele e causam autoinfecção" },
+      { term: "Diagnóstico", definition: "Método de Baermann" },
       { term: "Tratamento", definition: "Ivermectina de escolha" },
-      { term: "Profilaxia", definition: "Uso de calçados e higiene" }
+      { term: "Hiperinfecção", definition: "Ocorre em imunossuprimidos" },
+      { term: "Eosinofilia", definition: "Detectada no hemograma" }
     ]
   },
   {
@@ -134,7 +134,7 @@ export const phases: Phase[] = [
       },
       {
         id: 4,
-        question: "🦠 Número de ovos por T. solium?",
+        question: "🦠 Número de ovos por cisto em T. solium?",
         options: ["50k", "80k", "160k", "200k"],
         correct: 1,
         explanation: "T. solium produz cerca de 80 mil ovos."
@@ -625,7 +625,7 @@ export const phases: Phase[] = [
       {
         id: 2,
         question: "🏥 CASO 1 (cont.): Confirmado o diagnóstico. Qual a conduta terapêutica mais apropriada?",
-        options: ["Tratar apenas a criança", "Tratar criança e repetir em 14 dias",  "Tratar toda família simultaneamente", "Aguardar resolução espontânea"],
+        options: ["Tratar apenas a criança", "Tratar criança e repetir em 14 dias",  "Tratar toda família simultaneamente", "Agu ardar resolução espontânea"],
         correct: 2,
         explanation: "Enterobius - toda família deve ser tratada para evitar reinfecção."
       },
