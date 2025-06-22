@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Search, Book, Gamepad2, Microscope } from 'lucide-react';
+import { Search, Book, Gamepad2, Microscope, Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,6 +13,7 @@ import { parasitesData } from '@/data/parasites';
 const Index = () => {
   const [selectedParasite, setSelectedParasite] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const filteredParasites = parasitesData.filter(parasite =>
@@ -21,13 +21,34 @@ const Index = () => {
     parasite.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const menuItems = [
+    {
+      title: "Jogo Clicker 🧪",
+      description: "Jogo de cliques incrementais",
+      path: "/clicker-game",
+      icon: Gamepad2
+    },
+    {
+      title: "Microscópio Maluco 🔬",
+      description: "Quiz interativo de parasitologia",
+      path: "/jogo-parasitologia/microscopio",
+      icon: Microscope
+    },
+    {
+      title: "Atlas de Parasitas 📚",
+      description: "Consulte o atlas completo",
+      path: "/",
+      icon: Book
+    }
+  ];
+
   if (selectedParasite) {
     return <ParasiteDetail parasite={selectedParasite} onBack={() => setSelectedParasite(null)} />;
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-      {/* Header */}
+      {/* Header with Menu */}
       <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 shadow-xl">
         <div className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
@@ -39,25 +60,72 @@ const Index = () => {
                 Atlas de Parasitas
               </h1>
             </div>
-            <div className="flex gap-3">
+            
+            {/* Menu Button */}
+            <div className="relative">
               <Button
-                onClick={() => navigate('/clicker-game')}
-                className="bg-white/20 hover:bg-white/30 text-white border-white/30 px-6 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="bg-white/20 hover:bg-white/30 text-white border-white/30 p-3"
                 variant="outline"
               >
-                <Gamepad2 className="mr-2 h-5 w-5" />
-                Jogo Clicker 🧪
+                {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
-              <Button
-                onClick={() => navigate('/jogo-parasitologia')}
-                className="bg-white/20 hover:bg-white/30 text-white border-white/30 px-6 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
-                variant="outline"
-              >
-                <Microscope className="mr-2 h-5 w-5" />
-                Microscópio Maluco 🔬
-              </Button>
+              
+              {/* Dropdown Menu */}
+              {menuOpen && (
+                <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-xl z-50 border">
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Menu de Jogos</h3>
+                    <div className="space-y-3">
+                      {menuItems.map((item, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            navigate(item.path);
+                            setMenuOpen(false);
+                          }}
+                          className="w-full text-left p-3 rounded-lg hover:bg-blue-50 transition-colors border border-gray-100"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <item.icon className="h-6 w-6 text-blue-600" />
+                            <div>
+                              <div className="font-medium text-gray-800">{item.title}</div>
+                              <div className="text-sm text-gray-600">{item.description}</div>
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                    
+                    <Separator className="my-4" />
+                    
+                    <div className="space-y-2">
+                      <h4 className="font-medium text-gray-700">Acesso Rápido</h4>
+                      <button
+                        onClick={() => {
+                          navigate('/jogo-parasitologia/microscopio');
+                          setMenuOpen(false);
+                        }}
+                        className="w-full text-left p-2 rounded hover:bg-gray-50 text-sm text-gray-600"
+                      >
+                        📚 Flashcards de Revisão
+                      </button>
+                      <button
+                        onClick={() => {
+                          navigate('/jogo-parasitologia/microscopio');
+                          setMenuOpen(false);
+                        }}
+                        className="w-full text-left p-2 rounded hover:bg-gray-50 text-sm text-gray-600"
+                      >
+                        ❓ Banco de Perguntas
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
+          
           <p className="text-blue-100 text-center text-lg max-w-2xl mx-auto">
             Guia completo para o estudo de parasitas humanos com informações detalhadas sobre morfologia, ciclo biológico e diagnóstico
           </p>
