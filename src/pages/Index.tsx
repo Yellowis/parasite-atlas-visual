@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Book, Gamepad2, Microscope, Menu, X } from 'lucide-react';
+import { Search, Book, Gamepad2, Microscope, Menu, X, MessageSquare } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
