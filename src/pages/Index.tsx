@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { Search, Book, Gamepad2, Microscope, Menu, X, MessageSquare } from 'lucide-react';
+import { Search, Book, Gamepad2, Microscope, Menu, X, MessageSquare, BookOpen, HelpCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -23,22 +24,50 @@ const Index = () => {
 
   const menuItems = [
     {
-      title: "Jogo Clicker 🧪",
-      description: "Jogo de cliques incrementais",
-      path: "/clicker-game",
-      icon: Gamepad2
+      title: "🎮 Jogos",
+      items: [
+        {
+          title: "Jogo Clicker 🧪",
+          description: "Jogo de cliques incrementais",
+          path: "/clicker-game",
+          icon: Gamepad2
+        },
+        {
+          title: "Microscópio Maluco 🔬",
+          description: "Quiz interativo de parasitologia",
+          path: "/jogo-parasitologia/microscopio",
+          icon: Microscope
+        }
+      ]
     },
     {
-      title: "Microscópio Maluco 🔬",
-      description: "Quiz interativo de parasitologia",
-      path: "/jogo-parasitologia/microscopio",
-      icon: Microscope
-    },
-    {
-      title: "Atlas de Parasitas 📚",
-      description: "Consulte o atlas completo",
-      path: "/",
-      icon: Book
+      title: "📚 Estudos",
+      items: [
+        {
+          title: "Atlas de Parasitas 📖",
+          description: "Consulte o atlas completo",
+          path: "/",
+          icon: Book
+        },
+        {
+          title: "Flashcards de Revisão 💡",
+          description: "Cartões para memorização",
+          path: "/jogo-parasitologia/microscopio",
+          icon: BookOpen
+        },
+        {
+          title: "Perguntas Discursivas ✍️",
+          description: "Questões com correção por IA",
+          path: "/perguntas-discursivas",
+          icon: MessageSquare
+        },
+        {
+          title: "Banco de Perguntas ❓",
+          description: "Quiz de múltipla escolha",
+          path: "/jogo-parasitologia/microscopio",
+          icon: HelpCircle
+        }
+      ]
     }
   ];
 
@@ -73,53 +102,36 @@ const Index = () => {
               
               {/* Dropdown Menu */}
               {menuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-xl z-50 border">
+                <div className="absolute right-0 top-full mt-2 w-96 bg-white rounded-lg shadow-xl z-50 border max-h-96 overflow-y-auto">
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Menu de Jogos</h3>
-                    <div className="space-y-3">
-                      {menuItems.map((item, index) => (
-                        <button
-                          key={index}
-                          onClick={() => {
-                            navigate(item.path);
-                            setMenuOpen(false);
-                          }}
-                          className="w-full text-left p-3 rounded-lg hover:bg-blue-50 transition-colors border border-gray-100"
-                        >
-                          <div className="flex items-center space-x-3">
-                            <item.icon className="h-6 w-6 text-blue-600" />
-                            <div>
-                              <div className="font-medium text-gray-800">{item.title}</div>
-                              <div className="text-sm text-gray-600">{item.description}</div>
-                            </div>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Menu Principal</h3>
                     
-                    <Separator className="my-4" />
-                    
-                    <div className="space-y-2">
-                      <h4 className="font-medium text-gray-700">Acesso Rápido</h4>
-                      <button
-                        onClick={() => {
-                          navigate('/jogo-parasitologia/microscopio');
-                          setMenuOpen(false);
-                        }}
-                        className="w-full text-left p-2 rounded hover:bg-gray-50 text-sm text-gray-600"
-                      >
-                        📚 Flashcards de Revisão
-                      </button>
-                      <button
-                        onClick={() => {
-                          navigate('/jogo-parasitologia/microscopio');
-                          setMenuOpen(false);
-                        }}
-                        className="w-full text-left p-2 rounded hover:bg-gray-50 text-sm text-gray-600"
-                      >
-                        ❓ Banco de Perguntas
-                      </button>
-                    </div>
+                    {menuItems.map((section, sectionIndex) => (
+                      <div key={sectionIndex} className="mb-4">
+                        <h4 className="font-medium text-gray-700 mb-2 text-sm">{section.title}</h4>
+                        <div className="space-y-2">
+                          {section.items.map((item, index) => (
+                            <button
+                              key={index}
+                              onClick={() => {
+                                navigate(item.path);
+                                setMenuOpen(false);
+                              }}
+                              className="w-full text-left p-3 rounded-lg hover:bg-blue-50 transition-colors border border-gray-100"
+                            >
+                              <div className="flex items-center space-x-3">
+                                <item.icon className="h-5 w-5 text-blue-600" />
+                                <div>
+                                  <div className="font-medium text-gray-800 text-sm">{item.title}</div>
+                                  <div className="text-xs text-gray-600">{item.description}</div>
+                                </div>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                        {sectionIndex < menuItems.length - 1 && <Separator className="my-3" />}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
