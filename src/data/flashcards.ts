@@ -1,4 +1,3 @@
-
 export interface Flashcard {
   id: number;
   front: string;
@@ -23,7 +22,7 @@ export const flashcardsData: Flashcard[] = [
   {
     id: 3,
     front: "Explique o ciclo biológico de Giardia lamblia",
-    back: "Cistos são ingeridos e desencistam no duodeno/jejuno, liberando trofozoítos. Os trofozoítos se multiplicam por fissão binária longitudinal e, no intestino, encistam novamente para serem eliminados nas fezes.",
+    back: "Cistos são ingeridos e, no estômago, o pH ácido induz o processo de excistação. No duodeno, sob ação de enzimas pancreáticas, os cistos se rompem, liberando trofozoítos. Os trofozoítos se multiplicam por fissão binária longitudinal e, ao chegarem ao intestino grosso, se encistam novamente para serem eliminados nas fezes.",
     category: "Giardia lamblia"
   },
   {
@@ -93,7 +92,7 @@ export const flashcardsData: Flashcard[] = [
   {
     id: 14,
     front: "Como ocorre a cisticercose no humano?",
-    back: "Ocorre pela ingestão acidental de ovos de Taenia solium eliminados nas fezes de um portador de teníase. Pode ser por autoinfecção externa (mãos contaminadas), autoinfecção interna (controversa: vômitos ou retroperistaltismo) ou heteroinfecção (alimentos/água contaminados por fezes de outro indivíduo).",
+    back: "Ocorre pela ingestão acidental de ovos de Taenia solium eliminados nas fezes de um portador de teníase. Pode ser por autoinfecção externa (mãos contaminadas), autoinfecção interna (controversa: vômitos ou retroperistaltismo) ou heteroinfecção (alimentos/água contaminados por fezes de outro indivíduo portador de teníase).",
     category: "Taenia"
   },
   {
