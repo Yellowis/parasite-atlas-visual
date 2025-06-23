@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { Search, Book, Gamepad2, Microscope, Menu, X, MessageSquare, BookOpen, HelpCircle } from 'lucide-react';
+import { Search, Book, Microscope, Menu, X, BookOpen, HelpCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -25,12 +26,6 @@ const Index = () => {
     {
       title: "🎮 Jogos",
       items: [
-        {
-          title: "Jogo Clicker 🧪",
-          description: "Jogo de cliques incrementais",
-          path: "/clicker-game",
-          icon: Gamepad2
-        },
         {
           title: "Microscópio Maluco 🔬",
           description: "Quiz interativo de parasitologia",
