@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Search, Book, Gamepad2, Microscope, Menu, X, MessageSquare, BookOpen, HelpCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -52,19 +51,13 @@ const Index = () => {
         {
           title: "Flashcards de Revisão 💡",
           description: "Cartões para memorização",
-          path: "/jogo-parasitologia/microscopio",
+          path: "/flashcards",
           icon: BookOpen
         },
         {
-          title: "Perguntas Discursivas ✍️",
-          description: "Questões com correção por IA",
-          path: "/perguntas-discursivas",
-          icon: MessageSquare
-        },
-        {
-          title: "Banco de Perguntas ❓",
+          title: "Quiz de Revisão 🧠",
           description: "Quiz de múltipla escolha",
-          path: "/jogo-parasitologia/microscopio",
+          path: "/quiz-revisao",
           icon: HelpCircle
         }
       ]
